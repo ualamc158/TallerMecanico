@@ -1580,7 +1580,7 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_jhVxQMWLEe6GV74yg1DxAg" name="importedTypes">
       <packagedElement xmi:type="uml:Package" xmi:id="_jhW_YMWLEe6GV74yg1DxAg" name="primitivetype">
-        <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_jhYNgMWLEe6GV74yg1DxAg" name="Cliente"/>
+        <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_jhYNgMWLEe6GV74yg1DxAg" name="boolean"/>
         <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_jiY6IMWLEe6GV74yg1DxAg" name="int"/>
         <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_rmxnUMWLEe6GV74yg1DxAg" name="float"/>
         <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_JZ9RUMWOEe6GV74yg1DxAg" name="int"/>
