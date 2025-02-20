@@ -34,7 +34,7 @@ public class Clientes {
         }
         if (nombre == null && telefono == null) {
             modificado = null;
-        } else if (nombre != null && telefono == null) {
+        } else if (telefono == null) {
             cliente.setNombre(nombre);
             modificado = cliente;
         } else if(nombre == null){
