@@ -1,10 +1,9 @@
 package org.iesalandalus.programacion.tallermecanico.modelo.dominio;
 
-import java.security.PrivilegedAction;
 import java.util.Objects;
 
 public record Vehiculo(String marca, String modelo, String matricula) {
-    private static final String ER_MARCA = "[A-ZÁÉÍÓÚ].*";
+    private static final String ER_MARCA = "([A-ZÁÉÍÓÚ]+[a-záéíóú]*[A-ZÁÉÍÓÚ]?[a-záéíóú]*)([ -][A-ZÁÉÍÓÚ][a-záéíóú]*)?";
     private static final String ER_MATRICULA = "\\d{4}[^AEIOU]{3}";
 
     public Vehiculo {
