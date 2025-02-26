@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f8b0e04e-6981-41d9-b2bd-c9ae382a0816" name="Changes" comment="revision avance">
+    <list default="true" id="f8b0e04e-6981-41d9-b2bd-c9ae382a0816" name="Changes" comment="revision terminada">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/modelo/negocio/Revisiones.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/modelo/dominio/Revision.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/modelo/dominio/Revision.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,6 +101,7 @@
     "JUnit.ClientesTest.executor": "Run",
     "JUnit.RevisionTest.executor": "Run",
     "JUnit.RevisionTest.getPrecioCalculaCorrectamentePrecio.executor": "Run",
+    "JUnit.RevisionesTest.executor": "Run",
     "JUnit.VehiculoTest.executor": "Run",
     "JUnit.VehiculosTest.executor": "Run",
     "JUnit.org.iesalandalus.programacion.tallermecanico.modelo in TallerMecanicoResuelto.test.executor": "Run",
@@ -146,22 +147,7 @@
       <recent name="org.iesalandalus.programacion.tallermecanico.modelo.dominio" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RevisionTest">
-    <configuration name="ClientesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="TallerMecanico.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.iesalandalus.programacion.tallermecanico.modelo.negocio.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.iesalandalus.programacion.tallermecanico.modelo.negocio" />
-      <option name="MAIN_CLASS_NAME" value="org.iesalandalus.programacion.tallermecanico.modelo.negocio.ClientesTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.RevisionesTest">
     <configuration name="RevisionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="TallerMecanico.test" />
       <extension name="coverage">
@@ -189,6 +175,21 @@
       <option name="MAIN_CLASS_NAME" value="org.iesalandalus.programacion.tallermecanico.modelo.dominio.RevisionTest" />
       <option name="METHOD_NAME" value="getPrecioCalculaCorrectamentePrecio(int,int,float,float)" />
       <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RevisionesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TallerMecanico.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.iesalandalus.programacion.tallermecanico.modelo.negocio.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.iesalandalus.programacion.tallermecanico.modelo.negocio" />
+      <option name="MAIN_CLASS_NAME" value="org.iesalandalus.programacion.tallermecanico.modelo.negocio.RevisionesTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -225,18 +226,18 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.RevisionTest.getPrecioCalculaCorrectamentePrecio" />
+      <item itemvalue="JUnit.RevisionesTest" />
       <item itemvalue="JUnit.RevisionTest" />
       <item itemvalue="JUnit.VehiculosTest" />
-      <item itemvalue="JUnit.ClientesTest" />
       <item itemvalue="JUnit.VehiculoTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RevisionesTest" />
         <item itemvalue="JUnit.RevisionTest" />
         <item itemvalue="JUnit.RevisionTest.getPrecioCalculaCorrectamentePrecio" />
         <item itemvalue="JUnit.VehiculosTest" />
         <item itemvalue="JUnit.VehiculoTest" />
-        <item itemvalue="JUnit.ClientesTest" />
       </list>
     </recent_temporary>
   </component>
@@ -321,7 +322,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740490707000</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="revision terminada">
+      <option name="closed" value="true" />
+      <created>1740561532645</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1740561532645</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -336,7 +345,8 @@
     <MESSAGE value="Clase vehículos terminada" />
     <MESSAGE value="revision iniciada" />
     <MESSAGE value="revision avance" />
-    <option name="LAST_COMMIT_MESSAGE" value="revision avance" />
+    <MESSAGE value="revision terminada" />
+    <option name="LAST_COMMIT_MESSAGE" value="revision terminada" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/TallerMecanico$RevisionTest.ic" NAME="RevisionTest Coverage Results" MODIFIED="1706862963586" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
