@@ -27,9 +27,12 @@ public class Revision {
 
     public Revision(Revision revision){
         Objects.requireNonNull(revision, "La revisión no puede ser nula.");
-        setVehiculo(revision.getVehiculo());
-        setCliente(revision.getCliente());
-        setFechaInicio(revision.getFechaInicio());
+        vehiculo = revision.getVehiculo();
+        cliente = new Cliente (revision.getCliente());
+        fechaInicio = revision.getFechaInicio();
+        fechaFin = revision.getFechaFin();
+        precioMaterial = revision.getPrecioMaterial();
+        horas = revision.getHoras();
     }
 
     public Cliente getCliente(){
@@ -37,7 +40,7 @@ public class Revision {
     }
 
     private void setCliente(Cliente cliente){
-        Objects.requireNonNull(cliente, "El cliente no puede ser nulo");
+        Objects.requireNonNull(cliente, "El cliente no puede ser nulo.");
         this.cliente = cliente;
     }
 
@@ -46,6 +49,7 @@ public class Revision {
     }
 
     private void setVehiculo(Vehiculo vehiculo){
+        Objects.requireNonNull(vehiculo, "El vehículo no puede ser nulo.");
         this.vehiculo = vehiculo;
     }
 
@@ -54,9 +58,9 @@ public class Revision {
     }
 
     public void setFechaInicio(LocalDate fechaInicio) {
-        Objects.requireNonNull(fechaInicio, "La fecha de inicio no puede se rnula");
+        Objects.requireNonNull(fechaInicio, "La fecha de inicio no puede ser nula.");
         if(fechaInicio.isAfter(LocalDate.now())){
-            throw new IllegalArgumentException("La fecha de inicio no puede ser aposterior a la fecha de actual.");
+            throw new IllegalArgumentException("La fecha de inicio no puede ser futura.");
         }
         this.fechaInicio = fechaInicio;
     }
@@ -67,11 +71,11 @@ public class Revision {
 
     public void setFechaFin(LocalDate fechaFin) {
         Objects.requireNonNull(fechaFin, "La fecha de fin no puede ser nula.");
-        if(!fechaInicio.isBefore(fechaFin)){
+        if(fechaFin.isBefore(fechaInicio)){
             throw new IllegalArgumentException("La fecha de fin no puede ser anterior a la fecha de inicio.");
         }
         if(fechaFin.isAfter(LocalDate.now())){
-            throw new IllegalArgumentException("La fecha de fin no puede ser anterior a la fecha de inicio.");
+            throw new IllegalArgumentException("La fecha de fin no puede ser futura.");
         }
         this.fechaFin = fechaFin;
     }
@@ -107,8 +111,11 @@ public class Revision {
         return fechaFin != null;
     }
 
-    public void cerrar(LocalDate fechaFin){
-        Objects.requireNonNull(fechaFin, "La fecha de finalización no puede ser nula.");
+    public void cerrar(LocalDate fechaFin) throws TallerMecanicoExcepcion {
+        Objects.requireNonNull(fechaFin, "La fecha de fin no puede ser nula.");
+        if(estaCerrada()){
+            throw new TallerMecanicoExcepcion("La revisión ya está cerrada.");
+        }
         setFechaFin(fechaFin);
     }
 
@@ -140,6 +147,12 @@ public class Revision {
 
     @Override
     public String toString() {
-        return String.format("[fechaInicio=%s, fechaFin=%s, horas=%s, precioMaterial=%s, cliente=%s, vehiculo=%s]", fechaInicio, fechaFin, horas, precioMaterial, cliente, vehiculo);
+        String resultado = String.format("%s - %s (%s) - %s %s - %s: (%s - %s), %d horas, %.2f € en material",
+                cliente.getNombre(), cliente.getDni(), cliente.getTelefono(), vehiculo.marca(), vehiculo.modelo(),
+                vehiculo.matricula(), fechaInicio, fechaFin != null ? fechaFin : "", horas, getPrecioMaterial());
+        if (getPrecio() > 0) {
+            resultado += String.format(", %.2f € total", getPrecio());
+        }
+        return resultado;
     }
 }
