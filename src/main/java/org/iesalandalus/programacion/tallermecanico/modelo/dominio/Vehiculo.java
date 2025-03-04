@@ -34,7 +34,6 @@ public record Vehiculo(String marca, String modelo, String matricula) {
     }
 
     public static Vehiculo get(String matricula) {
-
         return new Vehiculo("Ford", "mondeo", matricula);
     }
 
