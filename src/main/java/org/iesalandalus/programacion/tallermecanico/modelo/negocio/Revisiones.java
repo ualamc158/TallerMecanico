@@ -53,15 +53,20 @@ public class Revisiones {
         Objects.requireNonNull(fechaRevision, "La fecha de revisión no puede ser nula.");
 
         for (Revision revision : coleccionRevisiones) {
-            if ((revision.getCliente().equals(cliente)  && revision.getFechaFin() == null)){
-                throw new TallerMecanicoExcepcion("El cliente tiene otra revisión en curso.");
-            }
-            if(revision.getVehiculo().equals(vehiculo)){
-                throw new TallerMecanicoExcepcion("El vehículo está actualmente en revisión.");
-            }
-
-            if ((revision.getCliente().equals(cliente) || revision.getVehiculo().equals(vehiculo)) && revision.getFechaFin() != null && revision.getFechaFin().isAfter(fechaRevision)) {
-                throw new TallerMecanicoExcepcion("Existe una revisión cerrada con fecha de fin posterior a la nueva fecha de inicio.");
+            if (!revision.estaCerrada()) {
+                if (revision.getCliente().equals(cliente)) {
+                    throw new TallerMecanicoExcepcion("El cliente tiene otra revisión en curso.");
+                }
+                if (revision.getVehiculo().equals(vehiculo)) {
+                    throw new TallerMecanicoExcepcion("El vehículo está actualmente en revisión.");
+                }
+            } else if (!fechaRevision.isAfter(revision.getFechaFin())) {
+                if (revision.getCliente().equals(cliente)) {
+                    throw new TallerMecanicoExcepcion("El cliente tiene una revisión posterior.");
+                }
+                if (revision.getVehiculo().equals(vehiculo)) {
+                    throw new TallerMecanicoExcepcion("El vehículo tiene una revisión posterior.");
+                }
             }
         }
     }
