@@ -147,9 +147,8 @@ public class Revision {
 
     @Override
     public String toString() {
-        String resultado = String.format("%s - %s (%s) - %s %s - %s: (%s - %s), %d horas, %.2f € en material",
-                cliente.getNombre(), cliente.getDni(), cliente.getTelefono(), vehiculo.marca(), vehiculo.modelo(),
-                vehiculo.matricula(), fechaInicio, fechaFin != null ? fechaFin : "", horas, getPrecioMaterial());
+        String resultado = String.format("%s - %s: (%s - %s), %d horas, %.2f € en material",
+                cliente, vehiculo, fechaInicio, fechaFin != null ? fechaFin : "", horas, getPrecioMaterial());
         if (getPrecio() > 0) {
             resultado += String.format(", %.2f € total", getPrecio());
         }
