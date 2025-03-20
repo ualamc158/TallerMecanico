@@ -28,8 +28,18 @@ public abstract class Trabajo {
         fechaInicio = trabajo.fechaInicio;
     }
 
-    public Trabajo get(Vehiculo vehiculo) {
+    public static Trabajo copiar(Trabajo trabajo){
+        Trabajo resultado;
+        if(trabajo instanceof Revision){
+            resultado = new Revision(trabajo.cliente,trabajo.vehiculo,trabajo.fechaInicio);
+        } else{
+            resultado = new Mecanico(trabajo.cliente,trabajo.vehiculo,trabajo.fechaInicio);
+        }
+        return resultado;
+    }
 
+    public static Trabajo get(Vehiculo vehiculo) {
+        return new Revision(Cliente.get("11111111H"),vehiculo,LocalDate.now());
     }
 
     public Cliente getCliente() {

@@ -1,25 +1,20 @@
 package org.iesalandalus.programacion.tallermecanico.modelo.dominio;
 
-import org.iesalandalus.programacion.tallermecanico.modelo.TallerMecanicoExcepcion;
-
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
-import java.util.Objects;
 
 public class Revision extends Trabajo {
-    private static final float FACTOR_HORA = 30;
+    private static final float FACTOR_HORA = 35;
 
     public Revision(Cliente cliente, Vehiculo vehiculo, LocalDate fechaInicio){
         super(cliente, vehiculo, fechaInicio);
     }
 
     public Revision(Revision revision){
-        return new Revision();
+
     }
 
     public float getPrecioEspecifico() {
-        return 0;
+        return getDias() * FACTOR_HORA;
     }
 
     @Override
