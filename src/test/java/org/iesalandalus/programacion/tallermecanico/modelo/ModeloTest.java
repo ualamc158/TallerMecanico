@@ -3,6 +3,7 @@ package org.iesalandalus.programacion.tallermecanico.modelo;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.*;
 import org.iesalandalus.programacion.tallermecanico.modelo.negocio.*;
 import org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria.Clientes;
+import org.iesalandalus.programacion.tallermecanico.modelo.negocio.ITrabajos;
 import org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria.Trabajos;
 import org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria.Vehiculos;
 import org.junit.jupiter.api.AfterEach;
@@ -37,10 +38,10 @@ class ModeloTest {
     private AutoCloseable procesadorAnotaciones;
     private MockedConstruction<Cliente> controladorCreacionMockCliente;
     private MockedConstruction<Clientes> controladorCreacionMockClientes;
-    private MockedConstruction<Vehiculos> controladorCreacionMockVehiculos;
+    private MockedConstruction<IVehiculos> controladorCreacionMockVehiculos;
     private MockedConstruction<Revision> controladorCreacionMockRevision;
     private MockedConstruction<Mecanico> controladorCreacionMockMecanico;
-    private MockedConstruction<Trabajos> controladorCreacionMockTrabajos;
+    private MockedConstruction<ITrabajos> controladorCreacionMockTrabajos;
 
 
     @BeforeAll

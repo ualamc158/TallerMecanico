@@ -1,4 +1,4 @@
-package org.iesalandalus.programacion.tallermecanico.modelo.negocio;
+package org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria;
 
 import org.iesalandalus.programacion.tallermecanico.modelo.TallerMecanicoExcepcion;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Cliente;
@@ -53,7 +53,7 @@ public class Revisiones {
         Objects.requireNonNull(fechaRevision, "La fecha de revisión no puede ser nula.");
 
         for (Revision revision : coleccionRevisiones) {
-            if (!revision.estaCerrada()) {
+            if (!revision.estaCerrado()) {
                 if (revision.getCliente().equals(cliente)) {
                     throw new TallerMecanicoExcepcion("El cliente tiene otra revisión en curso.");
                 }
@@ -85,7 +85,7 @@ public class Revisiones {
     }
 
     public Revision anadirPrecioMaterial(Revision revision, float precioMaterial) throws TallerMecanicoExcepcion {
-        getRevision(revision).anadirPrecioMaterial(precioMaterial);
+        //getRevision(revision).anadirPrecioMaterial(precioMaterial);
         return revision;
     }
 

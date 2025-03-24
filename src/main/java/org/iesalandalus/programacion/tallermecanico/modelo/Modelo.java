@@ -3,18 +3,20 @@ package org.iesalandalus.programacion.tallermecanico.modelo;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Cliente;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Revision;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Vehiculo;
-import org.iesalandalus.programacion.tallermecanico.modelo.negocio.Clientes;
-import org.iesalandalus.programacion.tallermecanico.modelo.negocio.Revisiones;
-import org.iesalandalus.programacion.tallermecanico.modelo.negocio.Vehiculos;
+import org.iesalandalus.programacion.tallermecanico.modelo.negocio.IVehiculos;
+import org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria.Clientes;
+import org.iesalandalus.programacion.tallermecanico.modelo.negocio.IClientes;
+import org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria.Revisiones;
+import org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria.Vehiculos;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Modelo {
-    private Clientes clientes;
+    private IClientes clientes;
     private Revisiones revisiones;
-    private Vehiculos vehiculos;
+    private IVehiculos IVehiculos;
 
     public Modelo() {
     }
@@ -22,7 +24,7 @@ public class Modelo {
     public void comenzar() {
         clientes = new Clientes();
         revisiones = new Revisiones();
-        vehiculos = new Vehiculos();
+        IVehiculos = new Vehiculos();
     }
 
     public void terminar() {
@@ -34,11 +36,11 @@ public class Modelo {
     }
 
     public void insertar(Vehiculo vehiculo) throws TallerMecanicoExcepcion {
-        vehiculos.insertar(vehiculo);
+        IVehiculos.insertar(vehiculo);
     }
 
     public void insertar(Revision revision) throws TallerMecanicoExcepcion {
-        revisiones.insertar(new Revision(clientes.buscar(revision.getCliente()), vehiculos.buscar(revision.getVehiculo()), revision.getFechaInicio()));
+        revisiones.insertar(new Revision(clientes.buscar(revision.getCliente()), IVehiculos.buscar(revision.getVehiculo()), revision.getFechaInicio()));
     }
 
     public Cliente buscar(Cliente cliente) {
@@ -46,7 +48,7 @@ public class Modelo {
     }
 
     public Vehiculo buscar(Vehiculo vehiculo) {
-        return vehiculos.buscar(vehiculo);
+        return IVehiculos.buscar(vehiculo);
     }
 
     public Revision buscar(Revision revision) {
@@ -82,7 +84,7 @@ public class Modelo {
         for (Revision revision : revisionesVehiculo) {
             revisiones.borrar(revision);
         }
-        vehiculos.borrar(vehiculo);
+        IVehiculos.borrar(vehiculo);
     }
 
     public void borrar(Revision revision) throws TallerMecanicoExcepcion {
@@ -106,7 +108,7 @@ public class Modelo {
     }
 
     public List<Vehiculo> getVehiculos() {
-        return new ArrayList<>(vehiculos.get());
+        return new ArrayList<>(IVehiculos.get());
     }
 
     public List<Revision> getRevisiones(Cliente cliente) {
