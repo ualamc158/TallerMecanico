@@ -1,9 +1,9 @@
-package org.iesalandalus.programacion.tallermecanico.vista;
+package org.iesalandalus.programacion.tallermecanico.vista.eventos;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public enum Opcion {
+public enum Evento {
     INSERTAR_CLIENTE(11, "Insertar un cliente."),
     BUSCAR_CLIENTE(12, "Buscar un cliente."),
     BORRAR_CLIENTE(13,"Borrar un cliente."),
@@ -24,34 +24,34 @@ public enum Opcion {
     CERRAR_REVISION(39,"Cerrar una revisión."),
     SALIR(0,"Salir del programa.");
 
-    private final int numeroOpcion;
-    private final String mensaje;
-    private static final Map<Integer, Opcion> opciones = new HashMap<>();
+    private final int codigo;
+    private final String texto;
+    private static final Map<Integer, Evento> eventos = new HashMap<>();
 
     static {
-        for(Opcion opcion : values()){
-            opciones.put(opcion.numeroOpcion, opcion);
+        for(Evento eventos : values()){
+            Evento.eventos.put(eventos.codigo, eventos);
         }
     }
 
-    private Opcion(int numeroOpcion, String mensaje) {
-        this.mensaje = mensaje;
-        this.numeroOpcion = numeroOpcion;
+    private Evento(int codigo, String texto) {
+        this.texto = texto;
+        this.codigo = codigo;
     }
 
-    public static boolean esValida(int numeroOpcion){
-        return opciones.containsKey(numeroOpcion);
+    public static boolean esValida(int codigo){
+        return eventos.containsKey(codigo);
     }
 
-    public static Opcion get(int numeroOpcion){
-        if(!esValida(numeroOpcion)){
+    public static Evento get(int codigo){
+        if(!esValida(codigo)){
             throw new IllegalArgumentException("El número de la opción no es correcto.");
         }
-        return opciones.get(numeroOpcion);
+        return eventos.get(codigo);
     }
 
     @Override
     public String toString() {
-        return String.format("%d.- %s%n", numeroOpcion, mensaje);
+        return String.format("%d.- %s%n", codigo, texto);
     }
 }

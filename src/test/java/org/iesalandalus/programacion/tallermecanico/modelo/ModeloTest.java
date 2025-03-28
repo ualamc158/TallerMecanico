@@ -38,10 +38,10 @@ class ModeloTest {
     private AutoCloseable procesadorAnotaciones;
     private MockedConstruction<Cliente> controladorCreacionMockCliente;
     private MockedConstruction<Clientes> controladorCreacionMockClientes;
-    private MockedConstruction<IVehiculos> controladorCreacionMockVehiculos;
+    private MockedConstruction<Vehiculos> controladorCreacionMockVehiculos;
     private MockedConstruction<Revision> controladorCreacionMockRevision;
     private MockedConstruction<Mecanico> controladorCreacionMockMecanico;
-    private MockedConstruction<ITrabajos> controladorCreacionMockTrabajos;
+    private MockedConstruction<Trabajos> controladorCreacionMockTrabajos;
 
 
     @BeforeAll

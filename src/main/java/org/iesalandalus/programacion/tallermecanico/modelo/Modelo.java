@@ -1,7 +1,6 @@
 package org.iesalandalus.programacion.tallermecanico.modelo;
 
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Cliente;
-import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Revision;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Trabajo;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Vehiculo;
 
@@ -17,7 +16,7 @@ public interface Modelo {
 
     void insertar(Vehiculo vehiculo) throws TallerMecanicoExcepcion;
 
-    void insertar(Revision revision) throws TallerMecanicoExcepcion;
+    void insertar(Trabajo trabajo) throws TallerMecanicoExcepcion;
 
     Cliente buscar(Cliente cliente);
 
@@ -41,11 +40,11 @@ public interface Modelo {
 
     List<Cliente> getClientes();
 
-    List<Trabajo> getTrabajos();
-
     List<Vehiculo> getVehiculos();
 
-    List<Trabajo> listaTrabajos(Cliente cliente);
+    List<Trabajo> getTrabajos();
 
-    List<Trabajo> getRevisiones(Vehiculo vehiculo);
+    List<Trabajo> getTrabajos(Cliente cliente);
+
+    List<Trabajo> getTrabajos(Vehiculo vehiculo);
 }

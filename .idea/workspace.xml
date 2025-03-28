@@ -4,14 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f8b0e04e-6981-41d9-b2bd-c9ae382a0816" name="Changes" comment="añadimos archivos">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/modelo/FabricaModelo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/modelo/cascada/ModeloCascada.java" afterDir="false" />
+    <list default="true" id="f8b0e04e-6981-41d9-b2bd-c9ae382a0816" name="Changes" comment="añadimos las clases de cascada, FabricaModelo y arreglamos Trabajos">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/controlador/Controlador.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/vista/eventos/GestorEventos.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/vista/eventos/ReceptorEventos.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/controlador/Controlador.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/modelo/FabricaModelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/modelo/FabricaModelo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/modelo/Modelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/modelo/Modelo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/modelo/dominio/Revision2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/modelo/negocio/memoria/Trabajos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/modelo/negocio/memoria/Trabajos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/modelo/cascada/ModeloCascada.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/modelo/cascada/ModeloCascada.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/vista/Consola.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/vista/Consola.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/vista/Opcion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/vista/eventos/Evento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/vista/Vista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/iesalandalus/programacion/tallermecanico/vista/Vista.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/iesalandalus/programacion/tallermecanico/modelo/ModeloTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/iesalandalus/programacion/tallermecanico/modelo/ModeloTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,9 +61,9 @@
         <option value="Exception" />
         <option value="package-info" />
         <option value="Record" />
+        <option value="Enum" />
         <option value="Class" />
         <option value="Interface" />
-        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -138,7 +142,7 @@
     "git-widget-placeholder": "refactorizacion__herencia",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "C:/Users/Alberto/Documents/GitHub/TallerMecanico/src/main/java/org/iesalandalus/programacion/tallermecanico/modelo/negocio",
-    "last_opened_file_path": "C:/Users/Alberto/Documents/GitHub/TallerMecanico/src/test/java/org/iesalandalus/programacion/tallermecanico/modelo/ModeloTest.java",
+    "last_opened_file_path": "E:/1º DAM/IdeaProjects/TallerMecanico",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -158,6 +162,7 @@
       <recent name="C:\Users\Alberto\Documents\GitHub\TallerMecanico\src\main\java\org\iesalandalus\programacion\tallermecanico\modelo\dominio" />
     </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="org.iesalandalus.programacion.tallermecanico.modelo.cascada" />
       <recent name="org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria" />
       <recent name="org.iesalandalus.programacion.tallermecanico.modelo.dominio" />
     </key>
@@ -168,6 +173,7 @@
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.iesalandalus.programacion.tallermecanico.modelo.cascada" />
+      <recent name="org.iesalandalus.programacion.tallermecanico.controlador" />
       <recent name="org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria" />
       <recent name="org.iesalandalus.programacion.tallermecanico.modelo.dominio" />
     </key>
@@ -450,7 +456,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743162569848</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="añadimos las clases de cascada, FabricaModelo y arreglamos Trabajos">
+      <option name="closed" value="true" />
+      <created>1743163354126</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1743163354126</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -478,7 +492,8 @@
     <MESSAGE value="Creacion de la clase mecanico" />
     <MESSAGE value="Avance en la segunda parte del proyecto" />
     <MESSAGE value="añadimos archivos" />
-    <option name="LAST_COMMIT_MESSAGE" value="añadimos archivos" />
+    <MESSAGE value="añadimos las clases de cascada, FabricaModelo y arreglamos Trabajos" />
+    <option name="LAST_COMMIT_MESSAGE" value="añadimos las clases de cascada, FabricaModelo y arreglamos Trabajos" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/TallerMecanico$RevisionTest.ic" NAME="RevisionTest Coverage Results" MODIFIED="1706862963586" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
