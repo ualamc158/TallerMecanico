@@ -6,6 +6,7 @@ import org.iesalandalus.programacion.tallermecanico.modelo.negocio.ITrabajos;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
@@ -89,19 +90,28 @@ public class Trabajos implements ITrabajos {
 
     private Trabajo getTrabajoAbierto(Vehiculo vehiculo) throws TallerMecanicoExcepcion {
         Objects.requireNonNull(vehiculo, "No puedo operar sobre un trabajo nulo.");
-        if (!coleccionTrabajos.contains(Trabajo.get(vehiculo)) && !Trabajo.get(vehiculo).estaCerrado()) {
+        Trabajo trabajoEncontrado = null;
+        Iterator<Trabajo> iteradorTrabajos = coleccionTrabajos.iterator();
+        while (iteradorTrabajos.hasNext() && trabajoEncontrado == null){
+            Trabajo trabajo = iteradorTrabajos.next();
+            if(trabajo.getVehiculo().equals(vehiculo) && !trabajo.estaCerrado()){
+                trabajoEncontrado = trabajo;
+            }
+        }
+
+        if(trabajoEncontrado == null){
             throw new TallerMecanicoExcepcion("No existe ningún trabajo abierto para dicho vehículo.");
         }
-        return Trabajo.get(vehiculo);
+        return trabajoEncontrado;
     }
 
     @Override
     public Trabajo anadirPrecioMaterial(Trabajo trabajo, float precioMaterial) throws TallerMecanicoExcepcion {
         Objects.requireNonNull(trabajo, "No puedo añadir precio del material a un trabajo nulo.");
-        if(getTrabajoAbierto(trabajo.getVehiculo()) instanceof Revision){
+        if(getTrabajoAbierto(trabajo.getVehiculo()) instanceof Mecanico mecanico){
+            mecanico.anadirPrecioMaterial(precioMaterial);
+        } else {
             throw new TallerMecanicoExcepcion("No se puede añadir precio al material para este tipo de trabajos.");
-        } else if(getTrabajoAbierto(trabajo.getVehiculo()) instanceof Mecanico){
-            ((Mecanico) getTrabajoAbierto(trabajo.getVehiculo())).anadirPrecioMaterial(precioMaterial);
         }
         return trabajo;
     }
