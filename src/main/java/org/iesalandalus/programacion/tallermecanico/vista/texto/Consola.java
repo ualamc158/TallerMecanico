@@ -1,4 +1,4 @@
-package org.iesalandalus.programacion.tallermecanico.vista;
+package org.iesalandalus.programacion.tallermecanico.vista.texto;
 
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Cliente;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Revision;
@@ -28,15 +28,15 @@ public class Consola {
     }
 
     public static Evento elegirOpcion() {
-        Evento opcion = null;
+        Evento evento = null;
         do {
             try {
-                opcion = Evento.get(leerEntero("\nElige una opción: "));
+                evento = Evento.get(leerEntero("\nElige una opción: "));
             } catch (IllegalArgumentException e) {
                 System.out.printf("ERROR: %s%n", e.getMessage());
             }
-        } while (opcion == null);
-        return opcion;
+        } while (evento == null);
+        return evento;
     }
 
     private static int leerEntero(String mensaje) {

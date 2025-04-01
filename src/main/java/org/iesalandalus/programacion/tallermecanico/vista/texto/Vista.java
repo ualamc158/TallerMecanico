@@ -1,4 +1,4 @@
-package org.iesalandalus.programacion.tallermecanico.vista;
+package org.iesalandalus.programacion.tallermecanico.vista.texto;
 
 import org.iesalandalus.programacion.tallermecanico.controlador.Controlador;
 import org.iesalandalus.programacion.tallermecanico.modelo.TallerMecanicoExcepcion;
@@ -38,14 +38,14 @@ public class Vista {
                 case INSERTAR_REVISION -> insertarRevision();
                 case BUSCAR_CLIENTE -> buscarCliente();
                 case BUSCAR_VEHICULO -> buscarVehiculo();
-                case BUSCAR_REVISION -> buscarRevision();
+                case BUSCAR_TRABAJO -> buscarRevision();
                 case MODIFICAR_CLIENTE -> modificarCliente();
                 case ANADIR_HORAS_REVISION -> anadirHoras();
                 case ANADIR_PRECIO_MATERIAL_REVISION -> anadirPrecioMaterial();
                 case CERRAR_REVISION -> cerrarRevision();
                 case BORRAR_CLIENTE -> borrarCliente();
                 case BORRAR_VEHICULO -> borrarVehiculo();
-                case BORRAR_REVISION -> borrarRevision();
+                case BORRAR_TRABAJO -> borrarRevision();
                 case LISTAR_CLIENTES -> listarClientes();
                 case LISTAR_VEHICULOS -> listarVehiculos();
                 case LISTAR_REVISIONES -> listarRevisiones();

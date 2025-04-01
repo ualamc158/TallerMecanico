@@ -13,15 +13,15 @@ public enum Evento {
     BUSCAR_VEHICULO(22,"Buscar un vehículo."),
     BORRAR_VEHICULO(23,"Borrar un vehículo."),
     LISTAR_VEHICULOS(24,"Listar todos los vehículos."),
-    INSERTAR_REVISION(31,"Insertar una revisión."),
-    BUSCAR_REVISION(32,"Buscar una revisión."),
-    BORRAR_REVISION(33,"Borrar una revisión."),
-    LISTAR_REVISIONES(34,"Listar todas las revisiones."),
-    LISTAR_REVISIONES_CLIENTE(35,"Listar todas las revisiones de un cliente."),
-    LISTAR_REVISIONES_VEHICULO(36,"Listar todas las revisiones de un vehículo."),
-    ANADIR_HORAS_REVISION(37,"Añadir horas a una revisión."),
-    ANADIR_PRECIO_MATERIAL_REVISION(38,"Añadir precio de material a una revisión."),
-    CERRAR_REVISION(39,"Cerrar una revisión."),
+    INSERTAR_TRABAJO(31,"Insertar un trabajo."),
+    BUSCAR_TRABAJO(32,"Buscar un trabajo."),
+    BORRAR_TRABAJO(33,"Borrar un trabajo."),
+    LISTAR_TRABAJOS(34,"Listar todos los trabajos."),
+    LISTAR_TRABAJOS_CLIENTE(35,"Listar todas los trabajos de un cliente."),
+    LISTAR_TRABAJOS_VEHICULO(36,"Listar todas los trabajos de un vehículo."),
+    ANADIR_HORAS_REVISION(37,"Añadir horas a un trabajo."),
+    ANADIR_PRECIO_MATERIAL_TRABAJO(38,"Añadir precio del material a un trabajo."),
+    CERRAR_TRABAJO(39,"Cerrar un trabajo."),
     SALIR(0,"Salir del programa.");
 
     private final int codigo;
@@ -29,8 +29,8 @@ public enum Evento {
     private static final Map<Integer, Evento> eventos = new HashMap<>();
 
     static {
-        for(Evento eventos : values()){
-            Evento.eventos.put(eventos.codigo, eventos);
+        for(Evento evento : values()){
+            Evento.eventos.put(evento.codigo, evento);
         }
     }
 
@@ -45,13 +45,13 @@ public enum Evento {
 
     public static Evento get(int codigo){
         if(!esValida(codigo)){
-            throw new IllegalArgumentException("El número de la opción no es correcto.");
+            throw new IllegalArgumentException("El código no es correcto.");
         }
         return eventos.get(codigo);
     }
 
     @Override
     public String toString() {
-        return String.format("%d.- %s%n", codigo, texto);
+        return texto;
     }
 }
