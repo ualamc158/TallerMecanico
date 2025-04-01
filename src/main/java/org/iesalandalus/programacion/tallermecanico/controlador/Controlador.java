@@ -5,7 +5,7 @@ import org.iesalandalus.programacion.tallermecanico.modelo.cascada.ModeloCascada
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Cliente;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Revision;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Vehiculo;
-import org.iesalandalus.programacion.tallermecanico.vista.texto.Vista;
+import org.iesalandalus.programacion.tallermecanico.vista.texto.VistaTexto;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -13,9 +13,9 @@ import java.util.Objects;
 
 public class Controlador {
     private final ModeloCascada modeloCascada;
-    private final Vista vista;
+    private final VistaTexto vista;
 
-    public Controlador(ModeloCascada modeloCascada, Vista vista) {
+    public Controlador(ModeloCascada modeloCascada, VistaTexto vista) {
         Objects.requireNonNull(modeloCascada, "ERROR: El modelo no puede ser nulo.");
         Objects.requireNonNull(vista, "ERROR: La vista no puede ser nula.");
         this.modeloCascada = modeloCascada;

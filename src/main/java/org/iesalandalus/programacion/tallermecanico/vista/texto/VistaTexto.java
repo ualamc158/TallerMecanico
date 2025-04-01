@@ -6,16 +6,18 @@ import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Cliente;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Revision;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Vehiculo;
 import org.iesalandalus.programacion.tallermecanico.vista.eventos.Evento;
+import org.iesalandalus.programacion.tallermecanico.vista.eventos.GestorEventos;
 
 import java.util.List;
 import java.util.Objects;
 
-public class Vista {
-    private Controlador controlador;
-    public void setControlador(Controlador controlador) {
-        Objects.requireNonNull(controlador, "ERROR: El controlador no puede ser nulo.");
-        this.controlador = controlador;
+public class VistaTexto {
+    private GestorEventos gestorEventos = new GestorEventos(Evento.values());
+
+    public GestorEventos getGestorEventos(){
+        return gestorEventos;
     }
+
     public void comenzar() {
         Evento opcion;
         do {
@@ -23,41 +25,24 @@ public class Vista {
             opcion = Consola.elegirOpcion();
             ejecutar(opcion);
         } while (opcion != Evento.SALIR);
-        controlador.terminar();
-
     }
-    public void terminar() {
-        System.out.println("Hasta luego");
 
-    }
     private void ejecutar(Evento opcion) {
-        try {
-            switch (opcion) {
-                case INSERTAR_CLIENTE -> insertarCliente();
-                case INSERTAR_VEHICULO -> insertarVehiculo();
-                case INSERTAR_REVISION -> insertarRevision();
-                case BUSCAR_CLIENTE -> buscarCliente();
-                case BUSCAR_VEHICULO -> buscarVehiculo();
-                case BUSCAR_TRABAJO -> buscarRevision();
-                case MODIFICAR_CLIENTE -> modificarCliente();
-                case ANADIR_HORAS_REVISION -> anadirHoras();
-                case ANADIR_PRECIO_MATERIAL_REVISION -> anadirPrecioMaterial();
-                case CERRAR_REVISION -> cerrarRevision();
-                case BORRAR_CLIENTE -> borrarCliente();
-                case BORRAR_VEHICULO -> borrarVehiculo();
-                case BORRAR_TRABAJO -> borrarRevision();
-                case LISTAR_CLIENTES -> listarClientes();
-                case LISTAR_VEHICULOS -> listarVehiculos();
-                case LISTAR_REVISIONES -> listarRevisiones();
-                case LISTAR_REVISIONES_CLIENTE -> listarRevisionesClientes();
-                case LISTAR_REVISIONES_VEHICULO -> listarRevisionesVehiculos();
-                case SALIR -> salir();
+        Consola.mostrarCabecera(opcion.toString());
+        gestorEventos.notificar(opcion);
+    }
+
+    public void terminar() {
+        System.out.println("¡¡¡Hasta luego Lucasss!!!");
+    }
 
 
-            }
-        } catch (Exception e) {
-            System.out.printf("ERROR: %s%n", e.getMessage());
-        }
+
+    private Controlador controlador;
+    public void setControlador(Controlador controlador) {
+        Objects.requireNonNull(controlador, "ERROR: El controlador no puede ser nulo.");
+        this.controlador = controlador;
+    }
 
     }
     private void insertarCliente() throws TallerMecanicoExcepcion {
