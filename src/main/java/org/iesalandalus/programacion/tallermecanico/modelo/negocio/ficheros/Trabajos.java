@@ -1,14 +1,11 @@
-package org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria;
+package org.iesalandalus.programacion.tallermecanico.modelo.negocio.ficheros;
 
 import org.iesalandalus.programacion.tallermecanico.modelo.TallerMecanicoExcepcion;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.*;
 import org.iesalandalus.programacion.tallermecanico.modelo.negocio.ITrabajos;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class Trabajos implements ITrabajos {
     private final List<Trabajo> coleccionTrabajos;
@@ -42,6 +39,15 @@ public class Trabajos implements ITrabajos {
             }
         }
         return trabajosVehiculo;
+    }
+
+    public Map<TipoTrabajo, Integer> getEstadisticasMensuales (LocalDate mes){
+
+    }
+
+    private Map<TipoTrabajo, Integer> inicializarEstadisticas(){
+        Map<TipoTrabajo, Integer> estadisticaMecanico = new HashMap<>(0);
+
     }
 
     @Override
