@@ -4,15 +4,48 @@ import org.iesalandalus.programacion.tallermecanico.modelo.TallerMecanicoExcepci
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.*;
 import org.iesalandalus.programacion.tallermecanico.modelo.negocio.ITrabajos;
 
+import javax.swing.text.Document;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class Trabajos implements ITrabajos {
     private final List<Trabajo> coleccionTrabajos;
+    private static Trabajos instancia;
+    private static final String FICHERO_TRABAJOS = "";
+    private static final DateTimeFormatter FORMATO_FECHA = null;
+    private static final String RAIZ = "";
+    private static final String TRABAJO = "";
+    private static final String CLIENTE = "";
+    private static final String VEHICULO = "";
+    private static final String FECHA_INICIO = "";
+    private static final String FECHA_FIN = "";
+    private static final String HORAS = "";
+    private static final String PRECIO_MATERIAL = "";
+    private static final String TIPO = "";
+    private static final String REVISION = "";
+    private static final String MECANICO = "";
 
     public Trabajos() {
         coleccionTrabajos = new ArrayList<>();
     }
+
+    static Trabajos getInstancia(){
+        if(instancia == null) {
+            instancia = new Trabajos();
+        }
+        return instancia;
+    }
+
+    public void comenzar(){
+
+    }
+
+    private void procesarDocumentoXml(Document documentoXml){
+
+    }
+
+
 
     @Override
     public List<Trabajo> get(){
@@ -42,11 +75,25 @@ public class Trabajos implements ITrabajos {
     }
 
     public Map<TipoTrabajo, Integer> getEstadisticasMensuales (LocalDate mes){
+        Objects.requireNonNull(mes, "El mes no puede ser nulo.");
+        Map<TipoTrabajo, Integer> estadisticas = inicializarEstadisticas();
 
+        for (Trabajo trabajo : coleccionTrabajos) {
+            if (trabajo.getFechaInicio().getMonth() == mes.getMonth() && trabajo.getFechaInicio().getYear() == mes.getYear()) {
+                TipoTrabajo tipo = TipoTrabajo.get(trabajo);
+                estadisticas.put(tipo, estadisticas.getOrDefault(tipo, 0) + 1);
+            }
+        }
+
+        return estadisticas;
     }
 
     private Map<TipoTrabajo, Integer> inicializarEstadisticas(){
-        Map<TipoTrabajo, Integer> estadisticaMecanico = new HashMap<>(0);
+        Map<TipoTrabajo, Integer> estadisticas = new HashMap<>();
+        for (TipoTrabajo tipo : TipoTrabajo.values()) {
+            estadisticas.put(tipo, 0);
+        }
+        return estadisticas;
 
     }
 
