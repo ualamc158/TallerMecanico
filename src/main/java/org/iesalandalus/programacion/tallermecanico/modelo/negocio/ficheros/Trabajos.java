@@ -3,8 +3,11 @@ package org.iesalandalus.programacion.tallermecanico.modelo.negocio.ficheros;
 import org.iesalandalus.programacion.tallermecanico.modelo.TallerMecanicoExcepcion;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.*;
 import org.iesalandalus.programacion.tallermecanico.modelo.negocio.ITrabajos;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
-import javax.swing.text.Document;
+
+import javax.xml.parsers.DocumentBuilder;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -13,7 +16,7 @@ public class Trabajos implements ITrabajos {
     private final List<Trabajo> coleccionTrabajos;
     private static Trabajos instancia;
     private static final String FICHERO_TRABAJOS = "";
-    private static final DateTimeFormatter FORMATO_FECHA = null;
+    private static final DateTimeFormatter FORMATO_FECHA = DateTimeFormatter.ISO_DATE;
     private static final String RAIZ = "";
     private static final String TRABAJO = "";
     private static final String CLIENTE = "";
@@ -23,37 +26,56 @@ public class Trabajos implements ITrabajos {
     private static final String HORAS = "";
     private static final String PRECIO_MATERIAL = "";
     private static final String TIPO = "";
-    private static final String REVISION = "";
-    private static final String MECANICO = "";
+    private static final String REVISION = "Revisión";
+    private static final String MECANICO = "Mecánico";
 
     public Trabajos() {
         coleccionTrabajos = new ArrayList<>();
     }
 
-    static Trabajos getInstancia(){
-        if(instancia == null) {
+    static Trabajos getInstancia() {
+        if (instancia == null) {
             instancia = new Trabajos();
         }
         return instancia;
     }
 
-    public void comenzar(){
-
+    public void comenzar() {
+        procesarDocumentoXml(crearDocumentoXml());
     }
 
-    private void procesarDocumentoXml(Document documentoXml){
-
+    private void procesarDocumentoXml(Document documentoXml) {
+        UtilidadesXml.leerDocumentoXml(FICHERO_TRABAJOS);
     }
 
+    private Trabajo getTrabajo(Element elemento) {
+        return null;
+    }
 
+    public void terminar() {
+        UtilidadesXml.escribirDocumentoXml(FICHERO_TRABAJOS, "");
+    }
+
+    private Document crearDocumentoXml() {
+        DocumentBuilder constructor = UtilidadesXml.crearConstructorDocumentoXml();
+        Document documentoXml = null;
+        if (constructor != null) {
+            documentoXml = constructor.newDocument();
+        }
+        return documentoXml;
+    }
+
+    private Element getElemento(Document documentoXml, Trabajo trabajo) {
+        return null;
+    }
 
     @Override
-    public List<Trabajo> get(){
+    public List<Trabajo> get() {
         return new ArrayList<>(coleccionTrabajos);
     }
 
     @Override
-    public List<Trabajo> get(Cliente cliente){
+    public List<Trabajo> get(Cliente cliente) {
         List<Trabajo> revisionesCliente = new ArrayList<>();
         for (Trabajo trabajo : coleccionTrabajos) {
             if (trabajo.getCliente().equals(cliente)) {
@@ -74,27 +96,26 @@ public class Trabajos implements ITrabajos {
         return trabajosVehiculo;
     }
 
-    public Map<TipoTrabajo, Integer> getEstadisticasMensuales (LocalDate mes){
+    @Override
+    public Map<TipoTrabajo, Integer> getEstadisticasMensuales(LocalDate mes) {
         Objects.requireNonNull(mes, "El mes no puede ser nulo.");
         Map<TipoTrabajo, Integer> estadisticas = inicializarEstadisticas();
 
         for (Trabajo trabajo : coleccionTrabajos) {
-            if (trabajo.getFechaInicio().getMonth() == mes.getMonth() && trabajo.getFechaInicio().getYear() == mes.getYear()) {
-                TipoTrabajo tipo = TipoTrabajo.get(trabajo);
-                estadisticas.put(tipo, estadisticas.getOrDefault(tipo, 0) + 1);
+            if (trabajo.getFechaInicio().getMonth() == mes.getMonth()) {
+                TipoTrabajo tipoTrabajo = TipoTrabajo.get(trabajo);
+                estadisticas.put(tipoTrabajo, estadisticas.getOrDefault(tipoTrabajo, 0) + 1);
             }
         }
-
         return estadisticas;
     }
 
-    private Map<TipoTrabajo, Integer> inicializarEstadisticas(){
+    private Map<TipoTrabajo, Integer> inicializarEstadisticas() {
         Map<TipoTrabajo, Integer> estadisticas = new HashMap<>();
-        for (TipoTrabajo tipo : TipoTrabajo.values()) {
-            estadisticas.put(tipo, 0);
+        for (TipoTrabajo tipoTrabajo : TipoTrabajo.values()) {
+            estadisticas.put(tipoTrabajo, 0);
         }
         return estadisticas;
-
     }
 
     @Override
@@ -145,14 +166,14 @@ public class Trabajos implements ITrabajos {
         Objects.requireNonNull(vehiculo, "No puedo operar sobre un trabajo nulo.");
         Trabajo trabajoEncontrado = null;
         Iterator<Trabajo> iteradorTrabajos = coleccionTrabajos.iterator();
-        while (iteradorTrabajos.hasNext() && trabajoEncontrado == null){
+        while (iteradorTrabajos.hasNext() && trabajoEncontrado == null) {
             Trabajo trabajo = iteradorTrabajos.next();
-            if(trabajo.getVehiculo().equals(vehiculo) && !trabajo.estaCerrado()){
+            if (trabajo.getVehiculo().equals(vehiculo) && !trabajo.estaCerrado()) {
                 trabajoEncontrado = trabajo;
             }
         }
 
-        if(trabajoEncontrado == null){
+        if (trabajoEncontrado == null) {
             throw new TallerMecanicoExcepcion("No existe ningún trabajo abierto para dicho vehículo.");
         }
         return trabajoEncontrado;
@@ -161,7 +182,7 @@ public class Trabajos implements ITrabajos {
     @Override
     public Trabajo anadirPrecioMaterial(Trabajo trabajo, float precioMaterial) throws TallerMecanicoExcepcion {
         Objects.requireNonNull(trabajo, "No puedo añadir precio del material a un trabajo nulo.");
-        if(getTrabajoAbierto(trabajo.getVehiculo()) instanceof Mecanico mecanico){
+        if (getTrabajoAbierto(trabajo.getVehiculo()) instanceof Mecanico mecanico) {
             mecanico.anadirPrecioMaterial(precioMaterial);
         } else {
             throw new TallerMecanicoExcepcion("No se puede añadir precio al material para este tipo de trabajos.");
@@ -183,9 +204,9 @@ public class Trabajos implements ITrabajos {
     public Trabajo buscar(Trabajo trabajo) {
         Objects.requireNonNull(trabajo, "No se puede buscar un trabajo nulo.");
         Trabajo encontrado;
-        if(!coleccionTrabajos.contains(trabajo)){
+        if (!coleccionTrabajos.contains(trabajo)) {
             encontrado = null;
-        } else{
+        } else {
             encontrado = trabajo;
         }
         return encontrado;
