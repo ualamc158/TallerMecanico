@@ -15,17 +15,17 @@ import java.util.*;
 public class Trabajos implements ITrabajos {
     private final List<Trabajo> coleccionTrabajos;
     private static Trabajos instancia;
-    private static final String FICHERO_TRABAJOS = "";
+    private static final String FICHERO_TRABAJOS = "Fichero Trabajos";
     private static final DateTimeFormatter FORMATO_FECHA = DateTimeFormatter.ISO_DATE;
-    private static final String RAIZ = "";
-    private static final String TRABAJO = "";
-    private static final String CLIENTE = "";
-    private static final String VEHICULO = "";
+    private static final String RAIZ = "Raíz";
+    private static final String TRABAJO = "Trabajo";
+    private static final String CLIENTE = "Cliente";
+    private static final String VEHICULO = "Vehículo";
     private static final String FECHA_INICIO = "";
     private static final String FECHA_FIN = "";
-    private static final String HORAS = "";
-    private static final String PRECIO_MATERIAL = "";
-    private static final String TIPO = "";
+    private static final String HORAS = "Horas";
+    private static final String PRECIO_MATERIAL = "Precio del Material";
+    private static final String TIPO = "Tipo";
     private static final String REVISION = "Revisión";
     private static final String MECANICO = "Mecánico";
 
