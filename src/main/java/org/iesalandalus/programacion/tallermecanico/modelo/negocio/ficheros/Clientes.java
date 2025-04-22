@@ -3,21 +3,46 @@ package org.iesalandalus.programacion.tallermecanico.modelo.negocio.ficheros;
 import org.iesalandalus.programacion.tallermecanico.modelo.TallerMecanicoExcepcion;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Cliente;
 import org.iesalandalus.programacion.tallermecanico.modelo.negocio.IClientes;
+import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class Clientes implements IClientes {
-    private final List<Cliente> coleccionClientes;
+    private static final String FICHERO_CLIENTES = String.format("%s%s%s", "datos", File.separator, "clientes.xml");
+    private static final String RAIZ = "clientes";
+    private static final String CLIENTE = "cliente";
+    private static final String NOMBRE = "nombre";
+    private static final String DNI = "dni";
+    private static final String TELEFONO = "teléfono";
 
+    private final List<Cliente> coleccionClientes;
+    private static Clientes instancia;
     public Clientes() {
         coleccionClientes = new ArrayList<>();
     }
 
+    static Clientes getInstancia() {
+        if (instancia == null) {
+            instancia = new Clientes();
+        }
+        return instancia;
+    }
+
     @Override
-    public List<Cliente> get() {
-        return new ArrayList<>(coleccionClientes);
+    public void comenzar() {
+        Document documentoXml = UtilidadesXml.leerDocumentoXml(FICHERO_CLIENTES);
+        if(documentoXml != null) {
+            procesarDocumentoXml(documentoXml);
+            System.out.printf("Fichero %s leído correctamente.%n", FICHERO_CLIENTES);
+        }
+    }
+
+    private void procesarDocumentoXml(Document documentoXml) {
+        NodeList clientes = documentoXml.getElementsByTagName(CLIENTE);
     }
 
     @Override
