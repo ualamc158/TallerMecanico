@@ -1,5 +1,6 @@
 package org.iesalandalus.programacion.tallermecanico.modelo.cascada;
 
+import org.iesalandalus.programacion.tallermecanico.modelo.Modelo;
 import org.iesalandalus.programacion.tallermecanico.modelo.TallerMecanicoExcepcion;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.*;
 import org.iesalandalus.programacion.tallermecanico.modelo.negocio.*;
@@ -7,9 +8,10 @@ import org.iesalandalus.programacion.tallermecanico.modelo.negocio.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
-public class ModeloCascada implements org.iesalandalus.programacion.tallermecanico.modelo.Modelo {
+public class ModeloCascada implements Modelo {
     private IClientes clientes;
     private ITrabajos trabajos;
     private IVehiculos vehiculos;
@@ -21,24 +23,33 @@ public class ModeloCascada implements org.iesalandalus.programacion.tallermecani
         vehiculos = fuenteDatos.crearVehiculos();
         trabajos = fuenteDatos.crearTrabajos();
     }
+
     @Override
     public void comenzar() {
+        clientes.comenzar();
+        vehiculos.comenzar();
+        trabajos.comenzar();
         System.out.println("Modelo comenzado.");
     }
+
     @Override
     public void terminar() {
-        System.out.println("El modelo ha terminado.");
+        clientes.terminar();
+        vehiculos.terminar();
+        trabajos.terminar();
+        System.out.println("Modelo terminado.");
     }
+
     @Override
     public void insertar(Cliente cliente) throws TallerMecanicoExcepcion {
-        Objects.requireNonNull(cliente, "El cliente no puede ser nulo.");
         clientes.insertar(new Cliente(cliente));
     }
+
     @Override
     public void insertar(Vehiculo vehiculo) throws TallerMecanicoExcepcion {
-        Objects.requireNonNull(vehiculo, "El vehiculo no puede ser nulo.");
         vehiculos.insertar(vehiculo);
     }
+
     @Override
     public void insertar(Trabajo trabajo) throws TallerMecanicoExcepcion {
         Objects.requireNonNull(trabajo, "La revisión no puede ser nula.");
@@ -162,7 +173,10 @@ public class ModeloCascada implements org.iesalandalus.programacion.tallermecani
         return copiaTrabajoVehiculo;
     }
 
-
+    @Override
+    public Map<TipoTrabajo, Integer> getEstadisticasMensuales(LocalDate mes) {
+        return Map.of();
+    }
 
 
 }
