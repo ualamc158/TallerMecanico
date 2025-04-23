@@ -16,10 +16,11 @@ public class Controlador implements IControlador {
 
     public Controlador(FabricaModelo fabricaModelo, FabricaFuenteDatos fabricaFuenteDatos, FabricaVista fabricaVista) {
         Objects.requireNonNull(fabricaModelo, "ERROR: El modelo no puede ser nulo.");
+        Objects.requireNonNull(fabricaFuenteDatos, "ERROR: La fabrica de la fuente de datos no puede ser nula.");
         Objects.requireNonNull(fabricaVista, "ERROR: La vista no puede ser nula.");
-        modelo = fabricaModelo.crear(fabricaFuenteDatos);
-        vista = fabricaVista.crear();
-        vista.getGestorEventos().suscribir(this, Evento.values());
+        this.modelo = fabricaModelo.crear(fabricaFuenteDatos);
+        this.vista = fabricaVista.crear();
+        this.vista.getGestorEventos().suscribir(this, Evento.values());
     }
 
     @Override
@@ -58,6 +59,7 @@ public class Controlador implements IControlador {
                 case LISTAR_TRABAJOS -> vista.mostrarTrabajos(modelo.getTrabajos());
                 case LISTAR_TRABAJOS_CLIENTE -> vista.mostrarTrabajos(modelo.getTrabajos(vista.leerClienteDni()));
                 case LISTAR_TRABAJOS_VEHICULO -> vista.mostrarTrabajos(modelo.getTrabajos(vista.leerVehiculoMatricula()));
+                case MOSTRAR_ESTADISTICAS_MENSUALES -> vista.mostrarEstadisticasMensuales(modelo.getEstadisticasMensuales(vista.leerMes()));
                 case SALIR -> terminar();
             }
             if (!resultado.isBlank()) {

@@ -1,6 +1,7 @@
 package org.iesalandalus.programacion.tallermecanico.vista;
 
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Cliente;
+import org.iesalandalus.programacion.tallermecanico.modelo.dominio.TipoTrabajo;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Trabajo;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Vehiculo;
 import org.iesalandalus.programacion.tallermecanico.vista.eventos.Evento;
@@ -9,6 +10,7 @@ import org.iesalandalus.programacion.tallermecanico.vista.texto.Consola;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 public interface Vista {
     GestorEventos getGestorEventos();
@@ -41,6 +43,8 @@ public interface Vista {
 
     LocalDate leerFechaCierre();
 
+    LocalDate leerMes();
+
     void notificarResultado(Evento evento, String texto, boolean exito);
 
     void mostrarCliente(Cliente cliente);
@@ -55,7 +59,5 @@ public interface Vista {
 
     void mostrarTrabajos(List<Trabajo> trabajos);
 
-    void mostrarTrabajosCliente(List<Trabajo> trabajosCliente);
-
-    void mostrarTrabajosVehiculo(List<Trabajo> trabajosVehiculo);
+    void mostrarEstadisticasMensuales(Map<TipoTrabajo, Integer> estadisticas);
 }

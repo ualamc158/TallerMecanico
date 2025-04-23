@@ -8,19 +8,19 @@ public enum TipoTrabajo {
 
     private final String nombre;
 
-    TipoTrabajo(String nombre) {
-        Objects.requireNonNull(nombre, "El nombre del tipo de trabajo no puede ser nulo.");
+    private TipoTrabajo(String nombre) {
         this.nombre = nombre;
     }
 
     public static TipoTrabajo get(Trabajo trabajo){
-        TipoTrabajo trabajoTipo;
+        Objects.requireNonNull(trabajo, "El trabajo no puede ser nulo.");
+        TipoTrabajo tipoTrabajo = null;
         if(trabajo instanceof Mecanico){
-            trabajoTipo = MECANICO;
-        } else {
-            trabajoTipo = REVISION;
+            tipoTrabajo = MECANICO;
+        } else if (trabajo instanceof Revision){
+            tipoTrabajo = REVISION;
         }
-        return trabajoTipo;
+        return tipoTrabajo;
     }
 
     @Override

@@ -165,18 +165,18 @@ public class Trabajos implements ITrabajos {
     public Map<TipoTrabajo, Integer> getEstadisticasMensuales(LocalDate mes) {
         Objects.requireNonNull(mes, "El mes no puede ser nulo.");
         Map<TipoTrabajo, Integer> estadisticas = inicializarEstadisticas();
-
         for (Trabajo trabajo : coleccionTrabajos) {
-            if (trabajo.getFechaInicio().getMonth() == mes.getMonth()) {
+            LocalDate fecha = trabajo.getFechaInicio();
+            if (fecha.getMonthValue() == mes.getMonthValue() && fecha.getYear() == mes.getYear()) {
                 TipoTrabajo tipoTrabajo = TipoTrabajo.get(trabajo);
-                estadisticas.put(tipoTrabajo, estadisticas.getOrDefault(tipoTrabajo, 0) + 1);
+                estadisticas.put(tipoTrabajo, estadisticas.get(tipoTrabajo) + 1);
             }
         }
         return estadisticas;
     }
 
     private Map<TipoTrabajo, Integer> inicializarEstadisticas() {
-        Map<TipoTrabajo, Integer> estadisticas = new HashMap<>();
+        Map<TipoTrabajo, Integer> estadisticas = new EnumMap<>(TipoTrabajo.class);
         for (TipoTrabajo tipoTrabajo : TipoTrabajo.values()) {
             estadisticas.put(tipoTrabajo, 0);
         }

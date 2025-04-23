@@ -175,7 +175,7 @@ public class ModeloCascada implements Modelo {
 
     @Override
     public Map<TipoTrabajo, Integer> getEstadisticasMensuales(LocalDate mes) {
-        return Map.of();
+        return trabajos.getEstadisticasMensuales(mes);
     }
 
 
