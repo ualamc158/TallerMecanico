@@ -4,8 +4,11 @@ import org.iesalandalus.programacion.tallermecanico.modelo.TallerMecanicoExcepci
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Cliente;
 import org.iesalandalus.programacion.tallermecanico.modelo.negocio.IClientes;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import javax.xml.parsers.DocumentBuilder;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +46,55 @@ public class Clientes implements IClientes {
 
     private void procesarDocumentoXml(Document documentoXml) {
         NodeList clientes = documentoXml.getElementsByTagName(CLIENTE);
+        for (int i = 0; i < clientes.getLength(); i++) {
+            Node cliente = clientes.item(i);
+            try {
+                if(cliente.getNodeType() == Node.ELEMENT_NODE) {
+                    insertar(getCliente((Element) cliente));
+                }
+            } catch (TallerMecanicoExcepcion | IllegalArgumentException | NullPointerException e) {
+                System.out.printf("Error al leer el cliente %d. --> %s%n", 1, e.getMessage());
+            }
+        }
     }
+
+    private Cliente getCliente(Element elemento) {
+        String nombre = elemento.getAttribute(NOMBRE);
+        String dni = elemento.getAttribute(DNI);
+        String telefono = elemento.getAttribute(TELEFONO);
+        return new Cliente(nombre, dni, telefono);
+    }
+
+    @Override
+    public void terminar() {
+        Document documentoXml = crearDocumentoXml();
+        UtilidadesXml.escribirDocumentoXml(documentoXml, FICHERO_CLIENTES);
+    }
+
+    private Document crearDocumentoXml() {
+        DocumentBuilder constructor = UtilidadesXml.crearConstructorDocumentoXml();
+        Document documentoXml = null;
+        if (constructor != null) {
+            documentoXml = constructor.newDocument();
+            documentoXml.appendChild(documentoXml.createElement(RAIZ));
+            for (Cliente cliente : coleccionClientes) {
+                Element elemento = getElemento(documentoXml, cliente);
+                documentoXml.getDocumentElement().appendChild(elemento);
+            }
+        }
+        return documentoXml;
+    }
+
+    private Element getElemento(Document documentoXml, Cliente cliente) {
+        Element elemento = documentoXml.createElement(CLIENTE);
+        elemento.setAttribute(NOMBRE, cliente.getNombre());
+        elemento.setAttribute(DNI, cliente.getDni());
+        elemento.setAttribute(TELEFONO, cliente.getTelefono());
+        return elemento;
+    }
+
+    @Override
+    public List<Cliente> get() {return new ArrayList<>(coleccionClientes);}
 
     @Override
     public void insertar(Cliente cliente) throws TallerMecanicoExcepcion {

@@ -8,6 +8,10 @@ import java.util.List;
 public interface IClientes {
     List<Cliente> get();
 
+    void comenzar();
+
+    void terminar();
+
     void insertar(Cliente cliente) throws TallerMecanicoExcepcion;
 
     Cliente modificar(Cliente cliente, String nombre, String telefono) throws TallerMecanicoExcepcion;
