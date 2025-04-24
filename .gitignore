@@ -1,3 +1,4 @@
+C:\Users\Alberto\Documents\GitHub\TallerMecanico\.idea
 workspace.xml
 .idea/workspace.xml
 .idea
@@ -43,5 +44,7 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+/.idea/
+/.idea/
 /.idea/
 /.idea/
