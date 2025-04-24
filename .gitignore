@@ -1,5 +1,5 @@
 workspace.xml
-.ide/workspace.xml
+.idea/workspace.xml
 .idea
 .gradle
 build/
@@ -43,3 +43,5 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+/.idea/
+/.idea/
