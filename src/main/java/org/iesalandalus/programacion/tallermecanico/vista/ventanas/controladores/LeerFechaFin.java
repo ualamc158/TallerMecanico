@@ -1,4 +1,4 @@
 package org.iesalandalus.programacion.tallermecanico.vista.ventanas.controladores;
 
-public class VistaVentana {
+public class LeerFechaFin {
 }
