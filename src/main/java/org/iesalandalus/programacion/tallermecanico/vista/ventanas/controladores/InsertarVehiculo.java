@@ -1,35 +1,26 @@
 package org.iesalandalus.programacion.tallermecanico.vista.ventanas.controladores;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import org.iesalandalus.programacion.tallermecanico.vista.ventanas.utilidades.Controlador;
 
-public class VentanaPrincipal extends Controlador {
+public class InsertarVehiculo extends Controlador {
 
     @FXML
-    private Button bClientes;
+    private Button bAceptar;
 
     @FXML
-    private Button bTrabajos;
+    private Button bCancelar;
 
     @FXML
-    private Button bVehiculos;
+    private TextField ctMarca;
 
     @FXML
-    void Clientes(ActionEvent event) {
-
-    }
+    private TextField ctMatricula;
 
     @FXML
-    void Trabajos(ActionEvent event) {
-
-    }
-
-    @FXML
-    void Vehiculos(ActionEvent event) {
-
-    }
+    private TextField ctModelo;
 
     @FXML
     void initialize() {
