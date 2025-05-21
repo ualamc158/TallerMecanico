@@ -36,7 +36,7 @@
          <children>
             <VBox alignment="CENTER" spacing="20.0">
                <children>
-                  <Button fx:id="bClientes" mnemonicParsing="false" onAction="#Clientes" prefHeight="100.0" prefWidth="200.0" text="Clientes">
+                  <Button fx:id="bClientes" mnemonicParsing="false" onAction="#botonPulsado" prefHeight="100.0" prefWidth="200.0" text="Clientes">
                      <graphic>
                         <ImageView fitHeight="82.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -55,7 +55,7 @@
             </VBox>
             <VBox alignment="CENTER" spacing="20.0">
                <children>
-                  <Button fx:id="bVehiculos" mnemonicParsing="false" onAction="#Vehiculos" prefHeight="100.0" prefWidth="200.0" text="Vehículos">
+                  <Button fx:id="bVehiculos" mnemonicParsing="false" onAction="#botonPulsado" prefHeight="100.0" prefWidth="200.0" text="Vehículos">
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -74,7 +74,7 @@
             </VBox>
             <VBox alignment="CENTER" spacing="20.0">
                <children>
-                  <Button fx:id="bTrabajos" mnemonicParsing="false" onAction="#Trabajos" prefHeight="100.0" prefWidth="200.0" text="Trabajos">
+                  <Button fx:id="bTrabajos" mnemonicParsing="false" onAction="#botonPulsado" prefHeight="100.0" prefWidth="200.0" text="Trabajos">
                      <graphic>
                         <ImageView fitHeight="83.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                            <image>

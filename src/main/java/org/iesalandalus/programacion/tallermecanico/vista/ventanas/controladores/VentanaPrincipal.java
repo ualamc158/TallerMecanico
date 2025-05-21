@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import org.iesalandalus.programacion.tallermecanico.vista.ventanas.utilidades.Controlador;
+import org.iesalandalus.programacion.tallermecanico.vista.ventanas.utilidades.Controladores;
 
 public class VentanaPrincipal extends Controlador {
 
@@ -17,18 +18,20 @@ public class VentanaPrincipal extends Controlador {
     private Button bVehiculos;
 
     @FXML
-    void Clientes(ActionEvent event) {
-
-    }
-
-    @FXML
-    void Trabajos(ActionEvent event) {
-
-    }
-
-    @FXML
-    void Vehiculos(ActionEvent event) {
-
+    void botonPulsado(ActionEvent event) {
+        if (event.getSource() == bClientes) {
+            MenuClientes menuClientes = (MenuClientes) Controladores.get("/vistas/MenuClientes.fxml", "Menú Clientes", null);
+            menuClientes.getEscenario().show();
+            menuClientes.centrar();
+        } else if (event.getSource() == bVehiculos) {
+            MenuVehiculos menuVehiculos = (MenuVehiculos) Controladores.get("/vistas/MenuVehiculos.fxml", "Menú Vehículos", null);
+            menuVehiculos.getEscenario().show();
+            menuVehiculos.centrar();
+        } else if (event.getSource() == bTrabajos) {
+            MenuTrabajos menuTrabajos = (MenuTrabajos) Controladores.get("/vistas/MenuTrabajos.fxml", "Menú Trabajos", null);
+            menuTrabajos.getEscenario().show();
+            menuTrabajos.centrar();
+        }
     }
 
     @FXML

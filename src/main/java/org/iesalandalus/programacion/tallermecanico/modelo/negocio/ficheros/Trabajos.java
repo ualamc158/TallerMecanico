@@ -21,14 +21,14 @@ public class Trabajos implements ITrabajos {
     private static final String RAIZ = "trabajos";
     private static final String TRABAJO = "trabajo";
     private static final String CLIENTE = "cliente";
-    private static final String VEHICULO = "vehículo";
+    private static final String VEHICULO = "vehiculo";
     private static final String FECHA_INICIO = "fechaInicio";
     private static final String FECHA_FIN = "fechaFin";
     private static final String HORAS = "horas";
     private static final String PRECIO_MATERIAL = "precioMaterial";
     private static final String TIPO = "tipo";
-    private static final String REVISION = "revisión";
-    private static final String MECANICO = "mecánico";
+    private static final String REVISION = "revision";
+    private static final String MECANICO = "mecanico";
 
     private final List<Trabajo> coleccionTrabajos;
     private static Trabajos instancia;
@@ -68,7 +68,7 @@ public class Trabajos implements ITrabajos {
     private Trabajo getTrabajo(Element elemento) throws TallerMecanicoExcepcion {
         Cliente cliente = Cliente.get(elemento.getAttribute(CLIENTE));
         cliente = Clientes.getInstancia().buscar(cliente);
-        Vehiculo vehiculo = Vehiculo.get(VEHICULO);
+        Vehiculo vehiculo = Vehiculo.get(elemento.getAttribute(VEHICULO));
         vehiculo = Vehiculos.getInstancia().buscar(vehiculo);
         LocalDate fechaInicio = LocalDate.parse(elemento.getAttribute(FECHA_INICIO), FORMATO_FECHA);
         String tipo = elemento.getAttribute(TIPO);
