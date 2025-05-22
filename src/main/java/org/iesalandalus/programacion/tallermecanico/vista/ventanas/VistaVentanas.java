@@ -1,5 +1,6 @@
 package org.iesalandalus.programacion.tallermecanico.vista.ventanas;
 
+import javafx.stage.WindowEvent;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Cliente;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.TipoTrabajo;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Trabajo;
@@ -7,6 +8,10 @@ import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Vehiculo;
 import org.iesalandalus.programacion.tallermecanico.vista.Vista;
 import org.iesalandalus.programacion.tallermecanico.vista.eventos.Evento;
 import org.iesalandalus.programacion.tallermecanico.vista.eventos.GestorEventos;
+import org.iesalandalus.programacion.tallermecanico.vista.ventanas.controladores.VentanaPrincipal;
+import org.iesalandalus.programacion.tallermecanico.vista.ventanas.controladores.vehiculos.InsertarVehiculo;
+import org.iesalandalus.programacion.tallermecanico.vista.ventanas.utilidades.Controladores;
+import org.iesalandalus.programacion.tallermecanico.vista.ventanas.utilidades.Dialogos;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -15,6 +20,20 @@ import java.util.Map;
 public class VistaVentanas implements Vista {
     private static VistaVentanas instancia;
     private final GestorEventos gestorEventos = new GestorEventos(Evento.values());
+    private VentanaPrincipal ventanaPrincipal;
+
+    void salir(WindowEvent e) {
+        if (Dialogos.mostrarDialogoConfirmacion("Salir", "Estas seguro que quieres salir?",ventanaPrincipal.getEscenario())) {
+            ventanaPrincipal.getEscenario().close();
+            VistaVentanas.getInstancia().getGestorEventos().notificar(Evento.SALIR);
+        } else {
+            e.consume();
+        }
+    }
+    public void inicializar() {
+        ventanaPrincipal = (VentanaPrincipal) Controladores.get("/vistas/VentanaPrincipal.fxml", "Taller Mecánico", null);
+        ventanaPrincipal.getEscenario().setOnCloseRequest(this::salir);
+    }
 
     @Override
     public GestorEventos getGestorEventos() {
@@ -53,7 +72,8 @@ public class VistaVentanas implements Vista {
 
     @Override
     public Vehiculo leerVehiculo() {
-        return null;
+        InsertarVehiculo insertarVehiculo = (InsertarVehiculo) Controladores.get("/vistas/InsertarVehiculo.fxml", "Insertar Vehículo", null);
+        return insertarVehiculo.getVehiculo();
     }
 
     @Override

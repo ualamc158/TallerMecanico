@@ -3,8 +3,9 @@ package org.iesalandalus.programacion.tallermecanico.vista.ventanas.controladore
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import org.iesalandalus.programacion.tallermecanico.vista.ventanas.utilidades.Controlador;
 
-public class MenuTrabajos {
+public class MenuTrabajos extends Controlador {
 
     @FXML
     private Button bBorrarTrabajo;

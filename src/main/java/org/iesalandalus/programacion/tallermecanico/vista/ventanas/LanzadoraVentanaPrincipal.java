@@ -10,7 +10,7 @@ public class LanzadoraVentanaPrincipal extends Application{
 
     @Override
     public void start(Stage stage) {
-        //VistaVentanas.getInstancia().comenzar();
+        VistaVentanas.getInstancia().inicializar();
         VentanaPrincipal ventanaPrincipal = (VentanaPrincipal) Controladores.get("/vistas/VentanaPrincipal.fxml", "Taller Mecánico", null);
         ventanaPrincipal.getEscenario().show();
         ventanaPrincipal.centrar();

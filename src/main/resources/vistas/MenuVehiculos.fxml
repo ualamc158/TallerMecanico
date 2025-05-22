@@ -20,7 +20,7 @@
          <children>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="200.0" spacing="20.0">
                <children>
-                  <Button fx:id="bInsertarVehiculo" mnemonicParsing="false" onAction="#InsertarVehiculo" prefHeight="60.0" prefWidth="200.0" text="Insertar Vehículo">
+                  <Button fx:id="bInsertarVehiculo" mnemonicParsing="false" onAction="#botonPulsado" prefHeight="60.0" prefWidth="200.0" text="Insertar Vehículo">
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -28,7 +28,7 @@
                            </image></ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="bBuscarVehiculo" layoutX="14.0" layoutY="180.0" mnemonicParsing="false" onAction="#BuscarVehiculo" prefHeight="60.0" prefWidth="200.0" text="Buscar Vehículo">
+                  <Button fx:id="bBuscarVehiculo" layoutX="14.0" layoutY="180.0" mnemonicParsing="false" onAction="#botonPulsado" prefHeight="60.0" prefWidth="200.0" text="Buscar Vehículo">
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -43,15 +43,15 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="200.0" spacing="20.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="200.0" text="Borrar Vehículo">
+                  <Button fx:id="bBorrarVehiculo" mnemonicParsing="false" onAction="#botonPulsado" prefHeight="60.0" prefWidth="200.0" text="Borrar Vehículo">
                      <graphic>
-                        <ImageView fx:id="bInsertarTrabajo" fitHeight="50.0" fitWidth="50.0" onDragDetected="#InsertarTrabajo" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="bInsertarTrabajo" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imagenes/Borrar.png" />
                            </image></ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="bListarVehiculo" mnemonicParsing="false" onAction="#ListarVehiculo" prefHeight="60.0" prefWidth="200.0" text="Listar Vehículos">
+                  <Button fx:id="bListarVehiculo" mnemonicParsing="false" onAction="#botonPulsado" prefHeight="60.0" prefWidth="200.0" text="Listar Vehículos">
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>

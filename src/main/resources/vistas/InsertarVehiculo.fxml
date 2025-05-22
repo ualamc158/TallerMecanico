@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.iesalandalus.programacion.tallermecanico.vista.ventanas.controladores.InsertarVehiculo">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.iesalandalus.programacion.tallermecanico.vista.ventanas.controladores.vehiculos.InsertarVehiculo">
    <children>
       <GridPane alignment="CENTER" prefHeight="84.0" prefWidth="224.0">
         <columnConstraints>
@@ -37,8 +36,8 @@
       </GridPane>
       <HBox alignment="CENTER" prefHeight="62.0" prefWidth="284.0" spacing="30.0">
          <children>
-            <Button fx:id="bCancelar" mnemonicParsing="false" text="Cancelar" />
-            <Button fx:id="bAceptar" mnemonicParsing="false" text="Aceptar" />
+            <Button fx:id="bCancelar" mnemonicParsing="false" onAction="#cerrarVentana" text="Cancelar" />
+            <Button fx:id="bAceptar" mnemonicParsing="false" onAction="#insertarVehiculo" text="Aceptar" />
          </children>
          <padding>
             <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
