@@ -10,7 +10,7 @@ import org.iesalandalus.programacion.tallermecanico.vista.FabricaVista;
 public class Main {
     public static void main(String[] args) {
         IControlador controlador = new Controlador(FabricaModelo.CASCADA, FabricaFuenteDatos.FICHEROS,procesarArgumentosVistas(args));
-        controlador.comenzar();
+         controlador.comenzar();
     }
 
     private static FabricaVista procesarArgumentosVistas(String[] args) {
