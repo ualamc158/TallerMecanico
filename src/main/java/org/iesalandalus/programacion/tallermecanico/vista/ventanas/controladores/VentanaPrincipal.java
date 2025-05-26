@@ -4,7 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
 import org.iesalandalus.programacion.tallermecanico.vista.eventos.Evento;
 import org.iesalandalus.programacion.tallermecanico.vista.ventanas.VistaVentanas;
 import org.iesalandalus.programacion.tallermecanico.vista.ventanas.utilidades.Controlador;
@@ -22,8 +21,6 @@ public class VentanaPrincipal extends Controlador {
     @FXML
     private Button bVehiculos;
 
-    @FXML
-    private MenuItem miSalir;
 
     @FXML
     void botonPulsado(ActionEvent event) {
@@ -40,6 +37,13 @@ public class VentanaPrincipal extends Controlador {
             menuTrabajos.getEscenario().show();
             menuTrabajos.centrar();
         }
+    }
+
+    @FXML
+    void acercaDe() {
+        AcercaDe acercaDe = (AcercaDe) Controladores.get("/vistas/AcercaDe.fxml", "Acerca de", null);
+        acercaDe.getEscenario().show();
+        acercaDe.centrar();
     }
 
     @FXML
